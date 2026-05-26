@@ -13,14 +13,19 @@ def calcular_jornada(recursos):
     if total_horas >= 40:
         clasificacion = "Sobretiempo"
     else:
-        clasificacion = "Horas normales"
+        clasificacion = "Horario Estándar"
     
     return nombre, total_horas, clasificacion
+reporte_semanal = []
 
 for recurso in recursos:
     nombre, total_horas, clasificacion = calcular_jornada(recurso)
-    
-    print(f"Recursos: {nombre}")
-    print(f"Total de horas: {total_horas}")
-    print(f"Clasificación: {clasificacion}")
-    print("---------------------------------")
+    reporte_semanal.append({
+        "nombre": nombre,
+        "total_horas": total_horas,
+        "clasificacion": clasificacion
+    })
+print(f"{'RECURSO':<18} | {'HORAS TOTALES':<15} | {'ESTADO DE JORNADA'}")
+print("-" * 55)
+for registro in reporte_semanal:
+ print(f"{registro['nombre']:<18} | {registro['total_horas']:<15} | {registro['clasificacion']}")
